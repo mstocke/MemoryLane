@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>843101282390-3ev1uv37ukmqh2114v73mpkon7hkbhrj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.843101282390-3ev1uv37ukmqh2114v73mpkon7hkbhrj</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD2NfsesQ9jcUhp18lK3QpMutkGq55fJkM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>843101282390</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.detroitlabs.MemoryLane</string>
+	<key>PROJECT_ID</key>
+	<string>memorylane-f956e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>memorylane-f956e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:843101282390:ios:96eaca874cf9b002</string>
+	<key>DATABASE_URL</key>
+	<string>https://memorylane-f956e.firebaseio.com</string>
+</dict>
+</plist>

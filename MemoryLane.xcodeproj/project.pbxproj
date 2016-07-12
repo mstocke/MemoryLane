@@ -7,25 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44D3F374DFFE5B54A242D924 /* libPods-MemoryLane.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65531908C949983AC41F09D4 /* libPods-MemoryLane.a */; };
 		D4F056831D33E373000F75E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F056821D33E373000F75E2 /* main.m */; };
 		D4F056861D33E373000F75E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F056851D33E373000F75E2 /* AppDelegate.m */; };
-		D4F056891D33E373000F75E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F056881D33E373000F75E2 /* ViewController.m */; };
+		D4F056891D33E373000F75E2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F056881D33E373000F75E2 /* LoginViewController.m */; };
 		D4F0568C1D33E373000F75E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4F0568A1D33E373000F75E2 /* Main.storyboard */; };
 		D4F0568E1D33E373000F75E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F0568D1D33E373000F75E2 /* Assets.xcassets */; };
 		D4F056911D33E373000F75E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4F0568F1D33E373000F75E2 /* LaunchScreen.storyboard */; };
+		D4F056991D342167000F75E2 /* Framework in Resources */ = {isa = PBXBuildFile; fileRef = D4F056981D342167000F75E2 /* Framework */; };
+		D4F056D21D353397000F75E2 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F056D11D353397000F75E2 /* HomeViewController.m */; };
+		D4F056D51D3534E9000F75E2 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F056D41D3534E9000F75E2 /* MapViewController.m */; };
+		D4F056D71D35401A000F75E2 /* PrivateInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4F056D61D35401A000F75E2 /* PrivateInfo.plist */; };
+		D4F056D91D357368000F75E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4F056D81D357368000F75E2 /* GoogleService-Info.plist */; };
+		D4F056DD1D357F70000F75E2 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F056DC1D357F70000F75E2 /* User.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A41084F410CD833721554AD /* Pods-MemoryLane.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoryLane.release.xcconfig"; path = "Pods/Target Support Files/Pods-MemoryLane/Pods-MemoryLane.release.xcconfig"; sourceTree = "<group>"; };
+		65531908C949983AC41F09D4 /* libPods-MemoryLane.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MemoryLane.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D143D35CDB36D28E5B26F6CE /* Pods-MemoryLane.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoryLane.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MemoryLane/Pods-MemoryLane.debug.xcconfig"; sourceTree = "<group>"; };
 		D4F0567E1D33E373000F75E2 /* MemoryLane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryLane.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F056821D33E373000F75E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D4F056841D33E373000F75E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D4F056851D33E373000F75E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D4F056871D33E373000F75E2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D4F056881D33E373000F75E2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D4F056871D33E373000F75E2 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		D4F056881D33E373000F75E2 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D4F0568B1D33E373000F75E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D4F0568D1D33E373000F75E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4F056901D33E373000F75E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4F056921D33E373000F75E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4F056981D342167000F75E2 /* Framework */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Framework; path = MemoryLane/Framework; sourceTree = "<group>"; };
+		D4F056D01D353397000F75E2 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		D4F056D11D353397000F75E2 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		D4F056D31D3534E9000F75E2 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		D4F056D41D3534E9000F75E2 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		D4F056D61D35401A000F75E2 /* PrivateInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PrivateInfo.plist; sourceTree = "<group>"; };
+		D4F056D81D357368000F75E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D4F056DB1D357F70000F75E2 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		D4F056DC1D357F70000F75E2 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +52,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44D3F374DFFE5B54A242D924 /* libPods-MemoryLane.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		625D7E4505B8E7032F65F702 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65531908C949983AC41F09D4 /* libPods-MemoryLane.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9EFE7A496FB5CFC3A2D0C9CA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D143D35CDB36D28E5B26F6CE /* Pods-MemoryLane.debug.xcconfig */,
+				0A41084F410CD833721554AD /* Pods-MemoryLane.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D4F056751D33E373000F75E2 = {
 			isa = PBXGroup;
 			children = (
+				D4F056981D342167000F75E2 /* Framework */,
 				D4F056801D33E373000F75E2 /* MemoryLane */,
 				D4F0567F1D33E373000F75E2 /* Products */,
+				9EFE7A496FB5CFC3A2D0C9CA /* Pods */,
+				625D7E4505B8E7032F65F702 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,14 +98,16 @@
 		D4F056801D33E373000F75E2 /* MemoryLane */ = {
 			isa = PBXGroup;
 			children = (
+				D4F056DA1D357E9F000F75E2 /* Models */,
+				D4F0568A1D33E373000F75E2 /* Main.storyboard */,
 				D4F056841D33E373000F75E2 /* AppDelegate.h */,
 				D4F056851D33E373000F75E2 /* AppDelegate.m */,
-				D4F056871D33E373000F75E2 /* ViewController.h */,
-				D4F056881D33E373000F75E2 /* ViewController.m */,
-				D4F0568A1D33E373000F75E2 /* Main.storyboard */,
+				D4F056D61D35401A000F75E2 /* PrivateInfo.plist */,
+				D4F056D81D357368000F75E2 /* GoogleService-Info.plist */,
+				D4F056921D33E373000F75E2 /* Info.plist */,
+				D4F0569A1D342D69000F75E2 /* Controllers */,
 				D4F0568D1D33E373000F75E2 /* Assets.xcassets */,
 				D4F0568F1D33E373000F75E2 /* LaunchScreen.storyboard */,
-				D4F056921D33E373000F75E2 /* Info.plist */,
 				D4F056811D33E373000F75E2 /* Supporting Files */,
 			);
 			path = MemoryLane;
@@ -79,6 +121,28 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D4F0569A1D342D69000F75E2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D4F056871D33E373000F75E2 /* LoginViewController.h */,
+				D4F056881D33E373000F75E2 /* LoginViewController.m */,
+				D4F056D01D353397000F75E2 /* HomeViewController.h */,
+				D4F056D11D353397000F75E2 /* HomeViewController.m */,
+				D4F056D31D3534E9000F75E2 /* MapViewController.h */,
+				D4F056D41D3534E9000F75E2 /* MapViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D4F056DA1D357E9F000F75E2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D4F056DB1D357F70000F75E2 /* User.h */,
+				D4F056DC1D357F70000F75E2 /* User.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +150,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4F056951D33E373000F75E2 /* Build configuration list for PBXNativeTarget "MemoryLane" */;
 			buildPhases = (
+				97C8C9A2980E1AEB437F81A0 /* [CP] Check Pods Manifest.lock */,
 				D4F0567A1D33E373000F75E2 /* Sources */,
 				D4F0567B1D33E373000F75E2 /* Frameworks */,
 				D4F0567C1D33E373000F75E2 /* Resources */,
+				CDC97CE1CDACDA064C62D0A9 /* [CP] Embed Pods Frameworks */,
+				3996C4722150D3A56FA7D678 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -138,20 +205,74 @@
 			files = (
 				D4F056911D33E373000F75E2 /* LaunchScreen.storyboard in Resources */,
 				D4F0568E1D33E373000F75E2 /* Assets.xcassets in Resources */,
+				D4F056D71D35401A000F75E2 /* PrivateInfo.plist in Resources */,
 				D4F0568C1D33E373000F75E2 /* Main.storyboard in Resources */,
+				D4F056991D342167000F75E2 /* Framework in Resources */,
+				D4F056D91D357368000F75E2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3996C4722150D3A56FA7D678 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MemoryLane/Pods-MemoryLane-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97C8C9A2980E1AEB437F81A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CDC97CE1CDACDA064C62D0A9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MemoryLane/Pods-MemoryLane-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D4F0567A1D33E373000F75E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4F056891D33E373000F75E2 /* ViewController.m in Sources */,
+				D4F056891D33E373000F75E2 /* LoginViewController.m in Sources */,
 				D4F056861D33E373000F75E2 /* AppDelegate.m in Sources */,
+				D4F056DD1D357F70000F75E2 /* User.m in Sources */,
+				D4F056D51D3534E9000F75E2 /* MapViewController.m in Sources */,
 				D4F056831D33E373000F75E2 /* main.m in Sources */,
+				D4F056D21D353397000F75E2 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +382,7 @@
 		};
 		D4F056961D33E373000F75E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D143D35CDB36D28E5B26F6CE /* Pods-MemoryLane.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MemoryLane/Info.plist;
@@ -272,6 +394,7 @@
 		};
 		D4F056971D33E373000F75E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A41084F410CD833721554AD /* Pods-MemoryLane.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MemoryLane/Info.plist;
@@ -300,6 +423,7 @@
 				D4F056971D33E373000F75E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
