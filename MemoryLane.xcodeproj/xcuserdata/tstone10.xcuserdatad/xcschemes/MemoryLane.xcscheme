@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D4F0567D1D33E373000F75E2"
+               BlueprintIdentifier = "D41074431D37D4E10019D1CB"
                BuildableName = "MemoryLane.app"
                BlueprintName = "MemoryLane"
                ReferencedContainer = "container:MemoryLane.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D4F0567D1D33E373000F75E2"
+            BlueprintIdentifier = "D41074431D37D4E10019D1CB"
             BuildableName = "MemoryLane.app"
             BlueprintName = "MemoryLane"
             ReferencedContainer = "container:MemoryLane.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D4F0567D1D33E373000F75E2"
+            BlueprintIdentifier = "D41074431D37D4E10019D1CB"
             BuildableName = "MemoryLane.app"
             BlueprintName = "MemoryLane"
             ReferencedContainer = "container:MemoryLane.xcodeproj">
@@ -74,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D4F0567D1D33E373000F75E2"
+            BlueprintIdentifier = "D41074431D37D4E10019D1CB"
             BuildableName = "MemoryLane.app"
             BlueprintName = "MemoryLane"
             ReferencedContainer = "container:MemoryLane.xcodeproj">

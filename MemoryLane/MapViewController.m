@@ -2,7 +2,7 @@
 //  MapViewController.m
 //  MemoryLane
 //
-//  Created by tstone10 on 7/12/16.
+//  Created by tstone10 on 7/14/16.
 //  Copyright © 2016 Detroit Labs. All rights reserved.
 //
 
@@ -48,7 +48,7 @@
     mapView_.settings.scrollGestures = YES;
     mapView_.settings.zoomGestures = YES;
     
-    self.view = mapView_;    
+    self.view = mapView_;
 }
 
 @end

@@ -1,9 +1,9 @@
 //
 //  User.h
-//  HitchikersGuide
+//  MemoryLane
 //
-//  Created by tstone10 on 6/29/16.
-//  Copyright © 2016 DetroitLabs. All rights reserved.
+//  Created by tstone10 on 7/14/16.
+//  Copyright © 2016 Detroit Labs. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

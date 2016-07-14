@@ -2,7 +2,7 @@
 //  ViewController.m
 //  MemoryLane
 //
-//  Created by tstone10 on 7/11/16.
+//  Created by tstone10 on 7/14/16.
 //  Copyright © 2016 Detroit Labs. All rights reserved.
 //
 
@@ -80,7 +80,7 @@ FIRDatabaseReference *ref;
             ref = [[FIRDatabase database] reference];
             
             //before we navigate, figure out the user object stuff in firebase
-            [[ref child:@"filters"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+            [[ref child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
                 NSMutableDictionary *filterObject;
                 //SearchFilters *filterObject = [[SearchFilters alloc]init];
                 
@@ -96,7 +96,7 @@ FIRDatabaseReference *ref;
                                       } mutableCopy];
                     
                     //[filterObject initWithDestinationAddress:@"" andArrivalDate:nil andArrivalTime:nil andRecurrence:@"" andFIRRef:(FIRDatabaseReference *)ref];
-                    [[ref child:@"filters"] updateChildValues:filterObject];
+                    [[ref child:@"users"] updateChildValues:filterObject];
                 }
                 else {
                     //use the current one
