@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -20,58 +19,44 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="TWs-Vq-W40" kind="modal" identifier="loginToHomeViewSegue" id="EHX-JX-QbK"/>
+                        <segue destination="gxH-tk-Rjp" kind="modal" identifier="loginToHomeViewSegue" id="gRF-BI-c3I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="162.66666666666666" y="339.38"/>
         </scene>
-        <!--Home View Controller-->
-        <scene sceneID="Qyd-xw-gco">
-            <objects>
-                <viewController id="TWs-Vq-W40" customClass="HomeViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="GcT-0W-POb"/>
-                        <viewControllerLayoutGuide type="bottom" id="Fqe-i7-WKd"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wQZ-qg-dR2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOE-zo-ks5">
-                                <rect key="frame" x="6" y="80" width="308" height="478"/>
-                                <connections>
-                                    <segue destination="gxH-tk-Rjp" kind="embed" id="Mt5-vO-23B"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="FOE-zo-ks5" firstAttribute="top" secondItem="GcT-0W-POb" secondAttribute="bottom" constant="60" id="LIG-Fb-W9F"/>
-                            <constraint firstItem="FOE-zo-ks5" firstAttribute="leading" secondItem="wQZ-qg-dR2" secondAttribute="leadingMargin" constant="-10" id="OkR-bo-dI8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FOE-zo-ks5" secondAttribute="trailing" constant="-10" id="df8-j1-Iyr"/>
-                            <constraint firstItem="Fqe-i7-WKd" firstAttribute="top" secondItem="FOE-zo-ks5" secondAttribute="bottom" constant="10" id="qr0-EM-27x"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wy2-bX-z92" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="670" y="339"/>
-        </scene>
         <!--Map View Controller-->
         <scene sceneID="M5n-e3-bQf">
             <objects>
                 <viewController id="gxH-tk-Rjp" customClass="MapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ltk-jw-jdl"/>
+                        <viewControllerLayoutGuide type="bottom" id="XEg-3s-pcP"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="AXh-ff-lG2">
-                        <rect key="frame" x="0.0" y="0.0" width="308" height="478"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VB7-6v-LbR">
+                                <rect key="frame" x="20" y="29" width="73" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Camera"/>
+                                <connections>
+                                    <action selector="useCamera:" destination="gxH-tk-Rjp" eventType="touchUpInside" id="dej-5j-kCS"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="VB7-6v-LbR" id="7K8-yY-Qox"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vR-2v-J0Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="360" y="1015"/>
+            <point key="canvasLocation" x="590" y="339"/>
         </scene>
     </scenes>
 </document>

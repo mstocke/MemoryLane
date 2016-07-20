@@ -81,28 +81,18 @@ FIRDatabaseReference *ref;
             
             //before we navigate, figure out the user object stuff in firebase
             [[ref child:@"users"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-                NSMutableDictionary *filterObject;
-                //SearchFilters *filterObject = [[SearchFilters alloc]init];
-                
-                //NSLog(@"[user uid] = %@", [user uid]);
-                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-                [dateFormatter setDateFormat: @"yyyy:MM:dd:HH:mm:ss"];
+                NSMutableDictionary *userObject;
                 
                 if(snapshot.value[[user uid]] == nil) {
                     //no object, create an empty one and push to firebase
-                    filterObject = [@{[user uid]: @{@"arrivalDate":[dateFormatter stringFromDate:[NSDate date]],
-                                                    @"arrivalTime":[dateFormatter stringFromDate:[NSDate date]],
-                                                    @"destinationAddress": @""}
-                                      } mutableCopy];
-                    
-                    //[filterObject initWithDestinationAddress:@"" andArrivalDate:nil andArrivalTime:nil andRecurrence:@"" andFIRRef:(FIRDatabaseReference *)ref];
-                    [[ref child:@"users"] updateChildValues:filterObject];
+                    userObject = [@{[user uid]: @{@"token": @"",
+                                            @"displayName": @""}
+                    } mutableCopy];
+                    [[ref child:@"users"] updateChildValues:userObject];
                 }
                 else {
                     //use the current one
-                    filterObject = [snapshot.value[[user uid]] mutableCopy];
-                    filterObject[@"arrivalDate"] = [dateFormatter dateFromString:filterObject[@"arrivalDate"]];
-                    filterObject[@"arrivalTime"] = [dateFormatter dateFromString:filterObject[@"arrivalTime"]];
+                    userObject = [snapshot.value[[user uid]] mutableCopy];
                 }
                 
                 //do something to put user object into app memory here, once models are ready

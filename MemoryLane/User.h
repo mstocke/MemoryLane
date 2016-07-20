@@ -14,6 +14,7 @@
 @property (strong, nonatomic) FBSDKAccessToken *token;
 @property (strong, nonatomic) NSString *userID;
 @property (strong, nonatomic) NSString *displayName;
+@property (strong, nonatomic) NSMutableArray *photos;
 
 +(instancetype)getInstance;
 -(void)setAccessToken:(FBSDKLoginManagerLoginResult *) loginResult;
