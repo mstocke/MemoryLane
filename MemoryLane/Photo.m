@@ -7,11 +7,10 @@
 //
 
 #import "Photo.h"
-#import "Location.h"
 
 @implementation Photo
 
--(instancetype)initWithName:(NSString *)name andDesc:(NSString *)desc andLocation:(Location *)location andDate:(NSString *)date andFavorite:(BOOL)favorite {
+-(instancetype)initWithName:(NSString *)name andDesc:(NSString *)desc andLocation:(NSString *)location andDate:(NSString *)date andFavorite:(BOOL)favorite {
     self = [super init];
     
     if (self) {

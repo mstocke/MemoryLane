@@ -18,8 +18,12 @@
 #pragma mark Properties
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
 @property (strong, nonatomic) FIRStorageReference *firebaseStorageRef;
+@property (strong, nonatomic) NSString *currentUserProfileKey;
 @property (strong, nonatomic) FIRStorage *firebaseStorage;
 @property (strong, nonatomic) NSString *nextPhoto;
+@property (nonatomic) double lat;
+@property (nonatomic) double lng;
+
 
 #pragma mark IBOutlets
 @property (strong, nonatomic) IBOutlet UIButton *cameraButton;
@@ -33,8 +37,11 @@
 }
 
 - (void)viewDidLoad {
+    //initializes Firebase Storage and creates reference to it.
+    [self firebaseSetUp];
+    //Sets up a listener for changes in the user's profile such as the profilePhotoDownloadURL.
+    [self listenForChangesInUserPhotos];
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -56,14 +63,6 @@
     [self presentViewController:_imagePicker animated:true completion:nil];
     
 }
-
-//- (IBAction)useCamera:(id)sender {
-//    UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
-//    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//    imagePicker.delegate = self;
-//    [self presentModalViewController:imagePicker animated:YES];
-//    [imagePicker release];
-//}
 
 /*
  Occurrs when the camera finishes taking the photo.
@@ -96,13 +95,35 @@
 }
 
 /*
+ Listens for changes to the current user's UserProfile.
+ This uses FIRDataEventTypeChildChange, which is similar to FIRDataEventTypeChildAdded
+ except that it occurrs when a child node's value is changed in some way and not
+ when a new child is added.
+ */
+-(void)listenForChangesInUserPhotos {
+    FIRDatabaseReference *UserProfileRef = [[[FIRDatabase database]reference]child:@"photos"];
+    FIRDatabaseQuery *currentUserProfileChangedQuery = [[UserProfileRef queryOrderedByChild:@"userId"] queryEqualToValue:[FIRAuth auth].currentUser.uid];
+    
+    [currentUserProfileChangedQuery observeEventType:FIRDataEventTypeChildChanged withBlock:^(FIRDataSnapshot *snapshot) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //create custom pins in map with all photos, including most recently added...
+            //probably loop through 
+            
+            
+            //[_usernameLabel setText:[NSString stringWithFormat:@"Hello, %@!", _currentUser.username]];
+            //use the code above to potentially populate the info popup
+        });
+    }];
+}
+
+/*
  This accepts the NSData that is returned from the image picker and then saves it on Firebase Storage.
  Once it is stored in Firebase storage it gives us back a downloadURL.
  */
 -(void)uploadPhotoToFirebase:(NSData *)imageData {
     //Create a uniqueID for the image and add it to the end of the images reference.
     NSString *uniqueID = [[NSUUID UUID]UUIDString];
-    NSString *newImageReference = [NSString stringWithFormat:@"photos/%@.jpg", uniqueID];
+    NSString *newImageReference = [NSString stringWithFormat:@"userPhotos/%@.jpg", uniqueID];
     //imagesRef creates a reference for the images folder and then adds a child to that folder, which will be every time a photo is taken.
     FIRStorageReference *imagesRef = [_firebaseStorageRef child:newImageReference];
     //This uploads the photo's NSData onto Firebase Storage.
@@ -110,16 +131,42 @@
         if (error) {
             NSLog(@"ERROR: %@", error.description);
         } else {
-            _nextPhoto = metadata.downloadURL.absoluteString;
-            [self addPhotoToUserList];
+            //_currentUser.profileImageDownloadURL = metadata.downloadURL.absoluteString;
+            [self updateCurrentUserProfileImageDownloadURLOnFirebaseDatabase:[User getInstance] andMetaData:metadata];
         }
     }];
     [uploadTask resume];
 }
 
--(void)addPhotoToUserList {
+/*
+ This accepts a UserProfile object to update (which will be our current user profile).
+ When the UserProfile object is passed it will already have an updated URL from when the new photo
+ is taken and the metaDataURL is sent back. It then updates the child node on Firebase.
+ */
+-(void)updateCurrentUserProfileImageDownloadURLOnFirebaseDatabase:(User *)userProfile andMetaData:(FIRStorageMetadata *)metadata {
+    
+//    FIRDatabaseReference *firebaseRef = [[FIRDatabase database] reference];
+//    NSLog(@"profilePhotoDownloadURL :: %@", metadata.downloadURL.absoluteString);
+//    NSLog(@"userId :: %@", userProfile.userID);
+//    //Need every value filled or it will just remove what we didn't put in the dictionary.
+//    NSDictionary *userProfileToUpdate = @{@"profilePhotoDownloadURL": metadata.downloadURL.absoluteString,
+//                                                           @"userId": userProfile.userID};
+//    NSDictionary *childUpdates = @{[@"/photos/" stringByAppendingString:userProfile.userID]: userProfileToUpdate};
+//    [firebaseRef updateChildValues:childUpdates];
+    
     FIRDatabaseReference *firebaseRef = [[FIRDatabase database] reference];
-    NSLog(@"addPhotoToUserList");
+    
+    //NSLog(@"profilePhotoDownloadURL :: %@", metadata.downloadURL.absoluteString);
+    //NSLog(@"userId :: %@", userProfile.userID);
+    
+    NSString *key = [[firebaseRef child:@"photos"] childByAutoId].key;
+    NSDictionary *userProfileToUpdate = @{@"profilePhotoDownloadURL": metadata.downloadURL.absoluteString,
+                                                           @"userId": userProfile.userID,
+                                                         @"latitude": [NSString stringWithFormat:@"%f", _lat],
+                                                        @"longitude": [NSString stringWithFormat:@"%f", _lng]};
+    NSDictionary *childUpdates = @{[@"/photos/" stringByAppendingString:key]: userProfileToUpdate};
+    [firebaseRef updateChildValues:childUpdates];
+    
 }
 
 
@@ -150,7 +197,7 @@
     // Ask for My Location data after the map has already been added to the UI.
     dispatch_async(dispatch_get_main_queue(), ^{
         mapView_.myLocationEnabled = YES;
-        NSLog(@"User's location: %@", mapView_.myLocation);
+        //NSLog(@"User's location: %@", mapView_.myLocation);
     });
 }
 
@@ -173,6 +220,13 @@
         CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
         mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
                                                          zoom:14];
+        
+        _lat = location.coordinate.latitude;
+        _lng = location.coordinate.longitude;
+        
+        NSLog(@"current location = %f", location.coordinate.latitude);
+        NSLog(@"current location = %f", location.coordinate.longitude);
+        
     }
 }
 

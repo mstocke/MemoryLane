@@ -86,13 +86,15 @@ FIRDatabaseReference *ref;
                 if(snapshot.value[[user uid]] == nil) {
                     //no object, create an empty one and push to firebase
                     userObject = [@{[user uid]: @{@"token": @"",
-                                            @"displayName": @""}
+                                            @"displayName": @"",
+                                                 @"photos": @""}
                     } mutableCopy];
                     [[ref child:@"users"] updateChildValues:userObject];
                 }
                 else {
                     //use the current one
-                    userObject = [snapshot.value[[user uid]] mutableCopy];
+                    userObject = [snapshot.value[[user uid]] mutableCopy];                    
+                    //NSLog(@"userObject = %@", userObject);
                 }
                 
                 //do something to put user object into app memory here, once models are ready
@@ -100,6 +102,8 @@ FIRDatabaseReference *ref;
                 if ([User getInstance]) {
                     [User getInstance].userID = [user uid];
                     [User getInstance].displayName = user.displayName;
+                    //[User getInstance].photos = userObject.photos;
+                    //-- create logic to retrieve photos from photos node with current user UID
                 }
                 
                 [self performSegueWithIdentifier:@"loginToHomeViewSegue" sender:loginButton];

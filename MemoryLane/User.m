@@ -26,6 +26,7 @@
 
 - (instancetype)initPrivately {
     self = [super init];
+    _photos = [[NSMutableDictionary alloc]init];
     return self;
 }
 

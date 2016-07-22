@@ -20,7 +20,6 @@
 		D41074691D3802ED0019D1CB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41074681D3802ED0019D1CB /* HomeViewController.m */; };
 		D410746C1D3802FD0019D1CB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D410746B1D3802FD0019D1CB /* MapViewController.m */; };
 		D410746F1D3D12980019D1CB /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = D410746E1D3D12980019D1CB /* Photo.m */; };
-		D41074721D3D12B10019D1CB /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = D41074711D3D12B10019D1CB /* Location.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,8 +46,6 @@
 		D410746B1D3802FD0019D1CB /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		D410746D1D3D12980019D1CB /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		D410746E1D3D12980019D1CB /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
-		D41074701D3D12B10019D1CB /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
-		D41074711D3D12B10019D1CB /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		D41074731D3D1D900019D1CB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -145,8 +142,6 @@
 				D41074611D37D5860019D1CB /* User.m */,
 				D410746D1D3D12980019D1CB /* Photo.h */,
 				D410746E1D3D12980019D1CB /* Photo.m */,
-				D41074701D3D12B10019D1CB /* Location.h */,
-				D41074711D3D12B10019D1CB /* Location.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -290,7 +285,6 @@
 				D410744C1D37D4E20019D1CB /* AppDelegate.m in Sources */,
 				D410746C1D3802FD0019D1CB /* MapViewController.m in Sources */,
 				D41074691D3802ED0019D1CB /* HomeViewController.m in Sources */,
-				D41074721D3D12B10019D1CB /* Location.m in Sources */,
 				D41074491D37D4E20019D1CB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
