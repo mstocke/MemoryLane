@@ -20,6 +20,7 @@
 		D41074691D3802ED0019D1CB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D41074681D3802ED0019D1CB /* HomeViewController.m */; };
 		D410746C1D3802FD0019D1CB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D410746B1D3802FD0019D1CB /* MapViewController.m */; };
 		D410746F1D3D12980019D1CB /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = D410746E1D3D12980019D1CB /* Photo.m */; };
+		D42D1DA61D479D41003FD488 /* PhotosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D42D1DA51D479D41003FD488 /* PhotosTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		D410746D1D3D12980019D1CB /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		D410746E1D3D12980019D1CB /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		D41074731D3D1D900019D1CB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D42D1DA41D479D41003FD488 /* PhotosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosTableViewController.h; sourceTree = "<group>"; };
+		D42D1DA51D479D41003FD488 /* PhotosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 				D410744E1D37D4E20019D1CB /* LoginViewController.m */,
 				D410746A1D3802FD0019D1CB /* MapViewController.h */,
 				D410746B1D3802FD0019D1CB /* MapViewController.m */,
+				D42D1DA41D479D41003FD488 /* PhotosTableViewController.h */,
+				D42D1DA51D479D41003FD488 /* PhotosTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 				D410744C1D37D4E20019D1CB /* AppDelegate.m in Sources */,
 				D410746C1D3802FD0019D1CB /* MapViewController.m in Sources */,
 				D41074691D3802ED0019D1CB /* HomeViewController.m in Sources */,
+				D42D1DA61D479D41003FD488 /* PhotosTableViewController.m in Sources */,
 				D41074491D37D4E20019D1CB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

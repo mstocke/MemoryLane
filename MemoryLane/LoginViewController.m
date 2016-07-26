@@ -86,8 +86,7 @@ FIRDatabaseReference *ref;
                 if(snapshot.value[[user uid]] == nil) {
                     //no object, create an empty one and push to firebase
                     userObject = [@{[user uid]: @{@"token": @"",
-                                            @"displayName": @"",
-                                                 @"photos": @""}
+                                            @"displayName": @""}
                     } mutableCopy];
                     [[ref child:@"users"] updateChildValues:userObject];
                 }

@@ -40,7 +40,6 @@
     //initializes Firebase Storage and creates reference to it.
     [self firebaseSetUp];
     //Sets up a listener for changes in the user's profile such as the profilePhotoDownloadURL.
-    [self listenForChangesInUserPhotos];
     [super viewDidLoad];
 }
 
@@ -95,25 +94,33 @@
 }
 
 /*
- Listens for changes to the current user's UserProfile.
- This uses FIRDataEventTypeChildChange, which is similar to FIRDataEventTypeChildAdded
- except that it occurrs when a child node's value is changed in some way and not
- when a new child is added.
+ Retrieve lists of items or listen for additions to a list of items.
  */
--(void)listenForChangesInUserPhotos {
-    FIRDatabaseReference *UserProfileRef = [[[FIRDatabase database]reference]child:@"photos"];
-    FIRDatabaseQuery *currentUserProfileChangedQuery = [[UserProfileRef queryOrderedByChild:@"userId"] queryEqualToValue:[FIRAuth auth].currentUser.uid];
-    
-    [currentUserProfileChangedQuery observeEventType:FIRDataEventTypeChildChanged withBlock:^(FIRDataSnapshot *snapshot) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //create custom pins in map with all photos, including most recently added...
-            //probably loop through 
-            
-            
-            //[_usernameLabel setText:[NSString stringWithFormat:@"Hello, %@!", _currentUser.username]];
-            //use the code above to potentially populate the info popup
-        });
+-(void)listenForAdditionsToUserPhotos {
+    // Listen for new comments in the Firebase database
+    FIRDatabaseReference *photosRef = [[[FIRDatabase database]reference]child:@"photos"];
+    [photosRef
+    observeEventType:FIRDataEventTypeChildAdded
+    withBlock:^(FIRDataSnapshot *snapshot) {
+        NSDictionary *photosDict = snapshot.value;
+        
+        //NSLog(@"photosDict = %@", photosDict);
+        if ([photosDict[@"userID"] isEqualToString:[[User getInstance]userID]]) {
+            [self placePhotoPinInMapWithLat:photosDict[@"latitude"] andLong:photosDict[@"longitude"] andImage:photosDict[@"profilePhotoDownloadURL"]];
+        }
     }];
+    //NSLog(@"User ID = %@", [snapshot.value[[User getInstance]]userID]);
+}
+
+-(void)placePhotoPinInMapWithLat:(NSString *)lat andLong:(NSString *)lng andImage:(NSString *)image {
+    CLLocationCoordinate2D position = CLLocationCoordinate2DMake([lat floatValue], [lng floatValue]);
+    GMSMarker *marker = [GMSMarker markerWithPosition:position];
+    
+    NSURL *url = [NSURL URLWithString:image];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    marker.icon = [UIImage imageWithData:data scale:12.0];
+    
+    marker.map = mapView_;
 }
 
 /*
@@ -145,33 +152,26 @@
  */
 -(void)updateCurrentUserProfileImageDownloadURLOnFirebaseDatabase:(User *)userProfile andMetaData:(FIRStorageMetadata *)metadata {
     
-//    FIRDatabaseReference *firebaseRef = [[FIRDatabase database] reference];
-//    NSLog(@"profilePhotoDownloadURL :: %@", metadata.downloadURL.absoluteString);
-//    NSLog(@"userId :: %@", userProfile.userID);
-//    //Need every value filled or it will just remove what we didn't put in the dictionary.
-//    NSDictionary *userProfileToUpdate = @{@"profilePhotoDownloadURL": metadata.downloadURL.absoluteString,
-//                                                           @"userId": userProfile.userID};
-//    NSDictionary *childUpdates = @{[@"/photos/" stringByAppendingString:userProfile.userID]: userProfileToUpdate};
-//    [firebaseRef updateChildValues:childUpdates];
-    
     FIRDatabaseReference *firebaseRef = [[FIRDatabase database] reference];
     
     //NSLog(@"profilePhotoDownloadURL :: %@", metadata.downloadURL.absoluteString);
-    //NSLog(@"userId :: %@", userProfile.userID);
+    //NSLog(@"userID :: %@", userProfile.userID);
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat: @"yyyy:MM:dd:HH:mm:ss"];
     
     NSString *key = [[firebaseRef child:@"photos"] childByAutoId].key;
     NSDictionary *userProfileToUpdate = @{@"profilePhotoDownloadURL": metadata.downloadURL.absoluteString,
-                                                           @"userId": userProfile.userID,
+                                                           @"userID": userProfile.userID,
                                                          @"latitude": [NSString stringWithFormat:@"%f", _lat],
-                                                        @"longitude": [NSString stringWithFormat:@"%f", _lng]};
+                                                        @"longitude": [NSString stringWithFormat:@"%f", _lng],
+                                                        @"photoDate": [dateFormatter stringFromDate:[NSDate date]]};
     NSDictionary *childUpdates = @{[@"/photos/" stringByAppendingString:key]: userProfileToUpdate};
     [firebaseRef updateChildValues:childUpdates];
-    
 }
 
 
 #pragma mark - Configure Map
-
 -(void)configureMap {
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:42.3313
                                                             longitude:-83.1998
@@ -198,6 +198,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         mapView_.myLocationEnabled = YES;
         //NSLog(@"User's location: %@", mapView_.myLocation);
+        [self listenForAdditionsToUserPhotos];
     });
 }
 
@@ -208,7 +209,6 @@
 }
 
 #pragma mark - KVO updates
-
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
@@ -224,9 +224,8 @@
         _lat = location.coordinate.latitude;
         _lng = location.coordinate.longitude;
         
-        NSLog(@"current location = %f", location.coordinate.latitude);
-        NSLog(@"current location = %f", location.coordinate.longitude);
-        
+        //NSLog(@"current location = %f", location.coordinate.latitude);
+        //NSLog(@"current location = %f", location.coordinate.longitude);
     }
 }
 

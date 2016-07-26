@@ -39,12 +39,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VB7-6v-LbR">
-                                <rect key="frame" x="20" y="29" width="73" height="30"/>
+                                <rect key="frame" x="16" y="29" width="97" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Camera"/>
+                                <state key="normal" title="Take Photo"/>
                                 <connections>
                                     <action selector="useCamera:" destination="gxH-tk-Rjp" eventType="touchUpInside" id="dej-5j-kCS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQS-Nf-FhN">
+                                <rect key="frame" x="214" y="29" width="87" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Photo List"/>
+                                <connections>
+                                    <action selector="useCamera:" destination="gxH-tk-Rjp" eventType="touchUpInside" id="UkQ-67-DSj"/>
+                                    <segue destination="eRr-cv-113" kind="modal" id="ruA-NY-yXY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -57,6 +67,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vR-2v-J0Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="590" y="339"/>
+        </scene>
+        <!--Photos Table View Controller-->
+        <scene sceneID="uhG-Vh-C3k">
+            <objects>
+                <tableViewController id="eRr-cv-113" customClass="PhotosTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="rwr-Q0-cgq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="9Lz-In-4Io">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Lz-In-4Io" id="IJx-f3-Oxx">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eRr-cv-113" id="HRq-3A-XUV"/>
+                            <outlet property="delegate" destination="eRr-cv-113" id="0aR-bq-h2w"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hUZ-HU-vMu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1035" y="340"/>
         </scene>
     </scenes>
 </document>
