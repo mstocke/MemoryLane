@@ -10,4 +10,6 @@
 
 @interface PhotosTableViewController : UITableViewController
 
+@property(strong, nonatomic)NSMutableArray *photos;
+
 @end

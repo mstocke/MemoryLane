@@ -27,6 +27,7 @@
 
 #pragma mark IBOutlets
 @property (strong, nonatomic) IBOutlet UIButton *cameraButton;
+@property (weak, nonatomic) IBOutlet UIButton *photoListButton;
 @property (strong, nonatomic) IBOutlet GMSMapView *mapView;
 
 @end
@@ -97,7 +98,7 @@
  Retrieve lists of items or listen for additions to a list of items.
  */
 -(void)listenForAdditionsToUserPhotos {
-    // Listen for new comments in the Firebase database
+    // Listen for new photos in the Firebase database
     FIRDatabaseReference *photosRef = [[[FIRDatabase database]reference]child:@"photos"];
     [photosRef
     observeEventType:FIRDataEventTypeChildAdded
@@ -184,6 +185,7 @@
     mapView_.settings.myLocationButton = YES;
     mapView_.settings.scrollGestures = YES;
     mapView_.settings.zoomGestures = YES;
+    mapView_.padding = UIEdgeInsetsMake(60, 0, 0 , 0);
     
     // Listen to the myLocation property of GMSMapView.
     [mapView_ addObserver:self

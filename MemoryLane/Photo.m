@@ -10,13 +10,15 @@
 
 @implementation Photo
 
--(instancetype)initWithName:(NSString *)name andDesc:(NSString *)desc andLocation:(NSString *)location andDate:(NSString *)date andFavorite:(BOOL)favorite {
+-(instancetype)initWithImagePath: (UIImage *)imgPath andName:(NSString *)name andDesc:(NSString *)desc andLat:(NSString *)lat andLong:(NSString *)lng andDate:(NSString *)date andFavorite:(BOOL)favorite {
     self = [super init];
     
     if (self) {
+        _imgPath = imgPath;
         _name = name;
         _desc = desc;
-        _location = location;
+        _lat = lat;
+        _lng = lng;
         _date = date;
         _favorite = favorite;
     }
