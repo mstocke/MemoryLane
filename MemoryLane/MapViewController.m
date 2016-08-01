@@ -8,7 +8,7 @@
 
 #import "MapViewController.h"
 #import "User.h"
-@import GoogleMaps;
+#import "Themer.h"
 @import FirebaseDatabase;
 @import Firebase;
 @import FirebaseStorage;
@@ -28,7 +28,6 @@
 #pragma mark IBOutlets
 @property (strong, nonatomic) IBOutlet UIButton *cameraButton;
 @property (weak, nonatomic) IBOutlet UIButton *photoListButton;
-@property (strong, nonatomic) IBOutlet GMSMapView *mapView;
 
 @end
 
@@ -40,19 +39,33 @@
 - (void)viewDidLoad {
     //initializes Firebase Storage and creates reference to it.
     [self firebaseSetUp];
-    //Sets up a listener for changes in the user's profile such as the profilePhotoDownloadURL.
+    [self customUISetup];
+    [self configureMap];
     [super viewDidLoad];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     //ref = [[FIRDatabase database] reference];
-    [self configureMap];
+    //[self configureMap];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)customUISetup {
+    Themer *mvcTheme = [[Themer alloc]init];
+    [mvcTheme themeButtons: _buttons];
+    [mvcTheme themeAppBackgroundImage: self];
+}
+
+//-(void)initDesignElements {
+//    CGRect upperScreenRect = {{0, 0}, {CGRectGetWidth(self.view.bounds), 50}};
+//    UIView* coverView = [[UIView alloc] initWithFrame:upperScreenRect];
+//    coverView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:1.0];
+//    [self.view insertSubview:coverView atIndex:1];
+//}
 
 #pragma mark - Camera Methods
 //Presents the iPhone's camera and is called when the profile photo is selected.
@@ -61,7 +74,6 @@
     [_imagePicker setDelegate:self];
     [_imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
     [self presentViewController:_imagePicker animated:true completion:nil];
-    
 }
 
 /*
@@ -118,7 +130,10 @@
     GMSMarker *marker = [GMSMarker markerWithPosition:position];
     
     NSURL *url = [NSURL URLWithString:image];
-    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    //NSLog(@"url = %@", url);
+    
+    NSData *data = [NSData dataWithContentsOfURL:url];    
     marker.icon = [UIImage imageWithData:data scale:12.0];
     
     marker.map = mapView_;
@@ -194,12 +209,14 @@
                   context:NULL];
     
     //self.view = mapView_;
-    [self.view insertSubview:mapView_ atIndex:0];
+    [self.view insertSubview:mapView_ atIndex:1];
+    [self.view bringSubviewToFront:_cameraButton];
+    [self.view bringSubviewToFront:_photoListButton];
     
     // Ask for My Location data after the map has already been added to the UI.
     dispatch_async(dispatch_get_main_queue(), ^{
         mapView_.myLocationEnabled = YES;
-        //NSLog(@"User's location: %@", mapView_.myLocation);
+        NSLog(@"User's location: %@", mapView_.myLocation);        
         [self listenForAdditionsToUserPhotos];
     });
 }

@@ -24,6 +24,7 @@
     [super viewDidLoad];
     
     [self createPhotosArray];
+    [self customUISetup];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -35,6 +36,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)customUISetup {
+    Themer *mvcTheme = [[Themer alloc]init];
+    [mvcTheme themeAppBackgroundImage: self];
 }
 
 - (void)createPhotosArray {
@@ -49,7 +55,7 @@
              NSURL *url = [NSURL URLWithString:photosDict[@"profilePhotoDownloadURL"]];
              NSData *data = [NSData dataWithContentsOfURL:url];
              
-             Photo *photo = [[Photo alloc] initWithImagePath:[UIImage imageWithData:data] andName:@"" andDesc:@"" andLat:photosDict[@"latitude"] andLong:photosDict[@"longitude"] andDate:photosDict[@"photoDate"] andFavorite:FALSE];
+             Photo *photo = [[Photo alloc] initWithImagePath:[UIImage imageWithData:data] andName:photosDict[@"name"] andDesc:photosDict[@"description"] andLat:photosDict[@"latitude"] andLong:photosDict[@"longitude"] andDate:photosDict[@"photoDate"] andFavorite:FALSE];
              [_photos addObject:photo];
              
              NSLog(@"photoObject = %@", photo);
@@ -72,8 +78,27 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"photoCell" forIndexPath:indexPath];
     Photo *currentPhoto = [_photos objectAtIndex:indexPath.row];
-    cell.textLabel.text = currentPhoto.date;
-    cell.imageView.image = currentPhoto.imgPath;
+    
+    cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.text = currentPhoto.name;
+    cell.detailTextLabel.text = currentPhoto.date;
+    
+    CGSize itemSize = CGSizeMake(40, 40);
+    UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+    CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+    [currentPhoto.imgPath drawInRect:imageRect];
+    cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    //cell.imageView.image = currentPhoto.imgPath;
+    
+    cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:17];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    tableView.rowHeight = 60;
+    
+    cell.contentView.backgroundColor = [UIColor clearColor];
+    cell.backgroundColor = [UIColor clearColor];
+    tableView.backgroundColor = [UIColor clearColor];
     
     //cell.textLabel.text = @"test";
     

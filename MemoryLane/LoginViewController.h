@@ -13,5 +13,4 @@
 
 @interface LoginViewController : UIViewController <FBSDKLoginButtonDelegate>
 
-
 @end

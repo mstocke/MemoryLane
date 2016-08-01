@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@import GoogleMaps;
 
 @interface MapViewController : UIViewController
+
+//IBOutletCollections
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
 
 @end

@@ -22,6 +22,7 @@
 		D410746F1D3D12980019D1CB /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = D410746E1D3D12980019D1CB /* Photo.m */; };
 		D42D1DA61D479D41003FD488 /* PhotosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D42D1DA51D479D41003FD488 /* PhotosTableViewController.m */; };
 		D42D1DA91D48FCAD003FD488 /* PhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D42D1DA81D48FCAD003FD488 /* PhotoDetailViewController.m */; };
+		D42D1DAC1D4A75BC003FD488 /* Themer.m in Sources */ = {isa = PBXBuildFile; fileRef = D42D1DAB1D4A75BC003FD488 /* Themer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,8 @@
 		D42D1DA51D479D41003FD488 /* PhotosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosTableViewController.m; sourceTree = "<group>"; };
 		D42D1DA71D48FCAD003FD488 /* PhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailViewController.h; sourceTree = "<group>"; };
 		D42D1DA81D48FCAD003FD488 /* PhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailViewController.m; sourceTree = "<group>"; };
+		D42D1DAA1D4A75BC003FD488 /* Themer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Themer.h; sourceTree = "<group>"; };
+		D42D1DAB1D4A75BC003FD488 /* Themer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Themer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +155,8 @@
 				D41074611D37D5860019D1CB /* User.m */,
 				D410746D1D3D12980019D1CB /* Photo.h */,
 				D410746E1D3D12980019D1CB /* Photo.m */,
+				D42D1DAA1D4A75BC003FD488 /* Themer.h */,
+				D42D1DAB1D4A75BC003FD488 /* Themer.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -293,6 +298,7 @@
 				D41074621D37D5860019D1CB /* User.m in Sources */,
 				D410744F1D37D4E20019D1CB /* LoginViewController.m in Sources */,
 				D410744C1D37D4E20019D1CB /* AppDelegate.m in Sources */,
+				D42D1DAC1D4A75BC003FD488 /* Themer.m in Sources */,
 				D42D1DA91D48FCAD003FD488 /* PhotoDetailViewController.m in Sources */,
 				D410746C1D3802FD0019D1CB /* MapViewController.m in Sources */,
 				D41074691D3802ED0019D1CB /* HomeViewController.m in Sources */,

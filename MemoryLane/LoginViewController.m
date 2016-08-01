@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "User.h"
+#import "Themer.h"
 @import Firebase;
 
 @interface LoginViewController ()
@@ -26,6 +27,8 @@ FIRDatabaseReference *ref;
     _loginButton.center = self.view.center;
     [self.view addSubview:_loginButton];
     [_loginButton setDelegate:self];
+    //[self addBackgroundImage];
+    [self customUISetup];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -35,13 +38,26 @@ FIRDatabaseReference *ref;
     // Dispose of any resources that can be recreated.
 }
 
+-(void)customUISetup {
+    Themer *mvcTheme = [[Themer alloc]init];
+    [mvcTheme themeAppBackgroundImage: self];
+}
+
+//-(void)addBackgroundImage {
+//    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"red_bg"]];
+//    [self.view insertSubview:backgroundImage atIndex:0];
+//}
+
 - (UIView *)createLoadingScreen {
     UIView *appLoadingView;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     appLoadingView = [[UIView alloc] initWithFrame:screenRect];
-    [appLoadingView setBackgroundColor:[UIColor colorWithRed:0 green:0.508 blue:0.508 alpha:1]];
+    //[appLoadingView setBackgroundColor:[UIColor colorWithRed:0 green:0.508 blue:0.508 alpha:1]];
+    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blue_circles"]];
+    [appLoadingView insertSubview:backgroundImage atIndex:0];
     
-    [appLoadingView addSubview:[self createAppNameLabelForScreenRect:screenRect]];
+    [appLoadingView addSubview:[self createAppFirstLineNameLabelForScreenRect:screenRect]];
+    [appLoadingView addSubview:[self createAppSecondLineNameLabelForScreenRect:screenRect]];
     [appLoadingView addSubview:[self createLoadingTextLabelForScreenRect:screenRect]];
     
     UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -52,11 +68,21 @@ FIRDatabaseReference *ref;
     return appLoadingView;
 }
 
--(UILabel *)createAppNameLabelForScreenRect:(CGRect)screenRect {
-    UILabel *appNameLabel = [[UILabel alloc] initWithFrame:CGRectMake((screenRect.size.width/2)-150, 150, 300, 60)];
-    appNameLabel.text = @"Memory Lane";
+-(UILabel *)createAppFirstLineNameLabelForScreenRect:(CGRect)screenRect {
+    UILabel *appNameLabel = [[UILabel alloc] initWithFrame:CGRectMake((screenRect.size.width/2)-150, 120, 300, 60)];
+    appNameLabel.text = @"Memory";
     appNameLabel.textColor = [UIColor whiteColor];
-    [appNameLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:24]];
+    [appNameLabel setFont:[UIFont fontWithName:@"SnellRoundhand-Black"  size:50]];
+    appNameLabel.textAlignment = NSTextAlignmentCenter;
+    
+    return appNameLabel;
+}
+
+-(UILabel *)createAppSecondLineNameLabelForScreenRect:(CGRect)screenRect {
+    UILabel *appNameLabel = [[UILabel alloc] initWithFrame:CGRectMake((screenRect.size.width/2)-150, 170, 300, 60)];
+    appNameLabel.text = @"Lane";
+    appNameLabel.textColor = [UIColor whiteColor];
+    [appNameLabel setFont:[UIFont fontWithName:@"SnellRoundhand-Black"  size:50]];
     appNameLabel.textAlignment = NSTextAlignmentCenter;
     
     return appNameLabel;

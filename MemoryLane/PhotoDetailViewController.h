@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Photo.h"
+#import "Themer.h"
 
 @interface PhotoDetailViewController : UIViewController
 
 @property(strong, nonatomic)Photo *photo;
+
+//IBOutletCollections
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *labels;
 
 @end

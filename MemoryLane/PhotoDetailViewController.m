@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self displayPhotoDetails];
+    [self customUISetup];
     // Do any additional setup after loading the view.
 }
 
@@ -30,8 +31,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)customUISetup {
+    Themer *mvcTheme = [[Themer alloc]init];
+    [mvcTheme themeLabels: _labels];
+    [mvcTheme themeAppBackgroundImage: self];
+}
+
 - (void)displayPhotoDetails {
     _photoImage.image = _photo.imgPath;
+    _photoImage.contentMode = UIViewContentModeScaleAspectFit;
     _photoNameLabel.text = _photo.name;
     _photoDescriptionLabel.text = _photo.desc;
     _photoDateLabel.text = _photo.date;

@@ -28,8 +28,26 @@
     [GMSServices provideAPIKey:googleApiKey];
     
     [FIRApp configure];
+    [self styleNavBarText];
     
     return YES;
+}
+
+-(void)styleNavBarText {
+    NSShadow *shadow = [[NSShadow alloc] init];
+    shadow.shadowOffset = CGSizeMake(0.0, 1.0);
+    shadow.shadowColor = [UIColor whiteColor];
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    //[[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil]
+    [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]]
+    setTitleTextAttributes:
+    @{NSForegroundColorAttributeName:[UIColor whiteColor],
+       
+       NSShadowAttributeName:shadow,
+       NSFontAttributeName:[UIFont fontWithName:@"Avenir" size:17]
+       }
+     forState:UIControlStateNormal];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -54,6 +72,7 @@
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
+    
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                           openURL:url
                                                 sourceApplication:sourceApplication
