@@ -13,6 +13,8 @@
 
 -(void)themeButtons:(NSArray *)buttons;
 -(void)themeLabels:(NSArray *)labels;
+-(void)themeTitleLabels:(NSArray *)titles;
+-(void)themeSubTitleLabels:(NSArray *)subs;
 -(void)themeTextFields:(NSArray *)textFields;
 -(void)themeAppBackgroundImage:(UIViewController *)controller;
 

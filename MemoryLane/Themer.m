@@ -31,8 +31,23 @@
 
 -(void)themeLabels:(NSArray *)labels {
     for (UILabel *lbl in labels) {
-        lbl.font = [UIFont fontWithName:@"Avenir" size:22];
-        lbl.textColor = [UIColor whiteColor];
+        lbl.font = [UIFont fontWithName:@"Avenir" size:17];
+        //lbl.textColor = [UIColor whiteColor];
+        lbl.textColor = [UIColor colorWithRed:0.0/255.0f green:48.0/255.0f blue:103.0/255.0f alpha:1.0f];
+    }
+}
+
+-(void)themeTitleLabels:(NSArray *)titles {
+    for (UILabel *ttl in titles) {
+        ttl.font = [UIFont fontWithName:@"Avenir-Heavy" size:25];
+        ttl.textColor = [UIColor colorWithRed:0.0/255.0f green:48.0/255.0f blue:103.0/255.0f alpha:1.0f];
+    }
+}
+
+-(void)themeSubTitleLabels:(NSArray *)subs {
+    for (UILabel *sub in subs) {
+        sub.font = [UIFont fontWithName:@"Avenir" size:17];
+        sub.textColor = [UIColor colorWithRed:0.0/255.0f green:48.0/255.0f blue:103.0/255.0f alpha:1.0f];
     }
 }
 

@@ -92,13 +92,18 @@
     UIGraphicsEndImageContext();
     //cell.imageView.image = currentPhoto.imgPath;
     
-    cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:17];
-    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.font = [UIFont fontWithName:@"Avenir-Heavy" size:20];
+    cell.textLabel.textColor = [UIColor colorWithRed:0.0/255.0f green:48.0/255.0f blue:103.0/255.0f alpha:1.0f];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Avenir" size:15];
+    cell.detailTextLabel.textColor = [UIColor colorWithRed:0.0/255.0f green:48.0/255.0f blue:103.0/255.0f alpha:1.0f];
     tableView.rowHeight = 60;
     
     cell.contentView.backgroundColor = [UIColor clearColor];
-    cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundColor = [[UIColor alloc] initWithRed:1.0 green:1.0 blue:1.0 alpha:0.6];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     tableView.backgroundColor = [UIColor clearColor];
+    [tableView setSeparatorColor:[UIColor colorWithRed:0.0/255.0f green:48.0/255.0f blue:103.0/255.0f alpha:1.0f]];
     
     //cell.textLabel.text = @"test";
     

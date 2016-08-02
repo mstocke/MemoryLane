@@ -16,5 +16,7 @@
 
 //IBOutletCollections
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *labels;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *titles;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *subs;
 
 @end

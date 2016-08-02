@@ -130,11 +130,24 @@
     GMSMarker *marker = [GMSMarker markerWithPosition:position];
     
     NSURL *url = [NSURL URLWithString:image];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+
+    CGSize itemSize = CGSizeMake(36, 36);
+    UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+    CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+    //[[UIImage imageWithData:data] drawInRect:imageRect];
+    [[UIImage imageWithData:data] drawInRect:imageRect blendMode:kCGBlendModeNormal alpha:1.0];
     
-    //NSLog(@"url = %@", url);
     
-    NSData *data = [NSData dataWithContentsOfURL:url];    
-    marker.icon = [UIImage imageWithData:data scale:12.0];
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetRGBStrokeColor(context, 0.0/255.0f, 48.0/255.0f, 103.0/255.0f, 1.0);
+    CGContextSetLineWidth(context, 5.0);
+    CGContextStrokeRect(context, imageRect);
+    
+    
+    //marker.icon = [UIImage imageWithData:data scale:12.0];
+    marker.icon = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     
     marker.map = mapView_;
 }

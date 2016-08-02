@@ -34,7 +34,11 @@
 -(void)customUISetup {
     Themer *mvcTheme = [[Themer alloc]init];
     [mvcTheme themeLabels: _labels];
+    [mvcTheme themeTitleLabels: _titles];
+    [mvcTheme themeSubTitleLabels: _subs];
     [mvcTheme themeAppBackgroundImage: self];
+    _photoDescriptionLabel.numberOfLines = 0;
+    [_photoDescriptionLabel sizeToFit];
 }
 
 - (void)displayPhotoDetails {
