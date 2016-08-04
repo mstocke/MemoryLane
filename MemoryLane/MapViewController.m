@@ -9,6 +9,7 @@
 #import "MapViewController.h"
 #import "User.h"
 #import "Themer.h"
+#import "PhotoDetailViewController.h"
 @import FirebaseDatabase;
 @import Firebase;
 @import FirebaseStorage;
@@ -24,7 +25,6 @@
 @property (nonatomic) double lat;
 @property (nonatomic) double lng;
 
-
 #pragma mark IBOutlets
 @property (strong, nonatomic) IBOutlet UIButton *cameraButton;
 @property (weak, nonatomic) IBOutlet UIButton *photoListButton;
@@ -38,6 +38,7 @@
 
 - (void)viewDidLoad {
     //initializes Firebase Storage and creates reference to it.
+    _newPic = FALSE;
     [self firebaseSetUp];
     [self customUISetup];
     [self configureMap];
@@ -86,6 +87,10 @@
     UIImage *image = [UIImage imageWithData:imageData];
     NSData *resizedImgData =  UIImageJPEGRepresentation([self reduceImageSize:image], .80);
     [self uploadPhotoToFirebase:resizedImgData];
+    
+    NSLog(@"dismissViewControllerAnimated");
+    
+    _newPic = TRUE;
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
@@ -119,7 +124,21 @@
         
         //NSLog(@"photosDict = %@", photosDict);
         if ([photosDict[@"userID"] isEqualToString:[[User getInstance]userID]]) {
-            [self placePhotoPinInMapWithLat:photosDict[@"latitude"] andLong:photosDict[@"longitude"] andImage:photosDict[@"profilePhotoDownloadURL"]];
+            [self placePhotoPinInMapWithLat:photosDict[@"latitude"] andLong:photosDict[@"longitude"] andImage:photosDict[@"profilePhotoDownloadURL"]];           
+        }
+        
+        NSLog(@"newPic = %i", _newPic);
+        
+        if (_newPic == TRUE) {
+            PhotoDetailViewController *nextVC = [[PhotoDetailViewController alloc] init];
+            nextVC = [self.storyboard instantiateViewControllerWithIdentifier:@"photoDetailViewController"];
+            nextVC.currentPhotoKey = snapshot.key;
+            
+            NSLog(@"currentPhotoKey = %@", nextVC.currentPhotoKey);
+
+            nextVC.mode = @"new";
+            nextVC.imgPath = photosDict[@"profilePhotoDownloadURL"];
+            [self.navigationController pushViewController:nextVC animated:YES];
         }
     }];
     //NSLog(@"User ID = %@", [snapshot.value[[User getInstance]]userID]);
@@ -171,6 +190,9 @@
             [self updateCurrentUserProfileImageDownloadURLOnFirebaseDatabase:[User getInstance] andMetaData:metadata];
         }
     }];
+    
+    NSLog(@"uploadTask resume");
+    
     [uploadTask resume];
 }
 
@@ -198,7 +220,6 @@
     NSDictionary *childUpdates = @{[@"/photos/" stringByAppendingString:key]: userProfileToUpdate};
     [firebaseRef updateChildValues:childUpdates];
 }
-
 
 #pragma mark - Configure Map
 -(void)configureMap {

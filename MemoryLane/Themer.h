@@ -16,6 +16,8 @@
 -(void)themeTitleLabels:(NSArray *)titles;
 -(void)themeSubTitleLabels:(NSArray *)subs;
 -(void)themeTextFields:(NSArray *)textFields;
+-(void)themeTextViews:(NSArray *)textViews;
+-(void)themeTitleTextFields:(NSArray *)titles;
 -(void)themeAppBackgroundImage:(UIViewController *)controller;
 
 @end

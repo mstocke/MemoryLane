@@ -53,11 +53,30 @@
 
 -(void)themeTextFields:(NSArray *)textFields {
     for (UITextField *tf in textFields) {
-        tf.font = [UIFont systemFontOfSize:20];
-        tf.layer.cornerRadius = 5;
+        tf.font = [UIFont fontWithName:@"Avenir" size:25];
+        tf.textColor = [UIColor colorWithRed:0.0/255.0f green:48.0/255.0f blue:103.0/255.0f alpha:1.0f];
+        tf.layer.cornerRadius = 0;
         tf.layer.masksToBounds = YES;
         tf.layer.borderWidth = 1.0f;
-        tf.layer.borderColor = [[UIColor colorWithRed:190.0f/255.0f green:190.0f/255.0f blue:190.0f/255.0f alpha:1.0] CGColor];
+        tf.layer.borderColor = [[UIColor colorWithRed:0.0f/255.0f green:48.0f/255.0f blue:103.0f/255.0f alpha:1.0] CGColor];
+    }
+}
+
+-(void)themeTextViews:(NSArray *)textViews {
+    for (UITextField *tv in textViews) {
+        tv.font = [UIFont fontWithName:@"Avenir" size:17];
+        tv.textColor = [UIColor colorWithRed:0.0/255.0f green:48.0/255.0f blue:103.0/255.0f alpha:1.0f];
+        tv.layer.cornerRadius = 0;
+        tv.layer.masksToBounds = YES;
+        tv.layer.borderWidth = 1.0f;
+        tv.layer.borderColor = [[UIColor colorWithRed:0.0f/255.0f green:48.0f/255.0f blue:103.0f/255.0f alpha:1.0] CGColor];
+    }
+}
+
+-(void)themeTitleTextFields:(NSArray *)titles {
+    for (UILabel *ttf in titles) {
+        ttf.font = [UIFont fontWithName:@"Avenir-Heavy" size:25];
+        ttf.textColor = [UIColor colorWithRed:0.0/255.0f green:48.0/255.0f blue:103.0/255.0f alpha:1.0f];
     }
 }
 

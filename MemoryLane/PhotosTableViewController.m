@@ -41,6 +41,7 @@
 -(void)customUISetup {
     Themer *mvcTheme = [[Themer alloc]init];
     [mvcTheme themeAppBackgroundImage: self];
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.0f]];
 }
 
 - (void)createPhotosArray {
@@ -58,7 +59,7 @@
              Photo *photo = [[Photo alloc] initWithImagePath:[UIImage imageWithData:data] andName:photosDict[@"name"] andDesc:photosDict[@"description"] andLat:photosDict[@"latitude"] andLong:photosDict[@"longitude"] andDate:photosDict[@"photoDate"] andFavorite:FALSE];
              [_photos addObject:photo];
              
-             NSLog(@"photoObject = %@", photo);
+             //NSLog(@"photoObject = %@", photo);
              [self.tableView reloadData];
          }
      }];
