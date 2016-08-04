@@ -10,13 +10,21 @@
 #import "Photo.h"
 #import "Themer.h"
 
-@interface PhotoDetailViewController : UIViewController
+@interface PhotoDetailViewController : UIViewController <UITextFieldDelegate> 
 
 @property(strong, nonatomic)Photo *photo;
+
+//Properties
+@property (strong, nonatomic) NSString *mode;
+@property (strong, nonatomic) NSString *imgPath;
+@property (strong, nonatomic) NSString *currentPhotoKey;
 
 //IBOutletCollections
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *labels;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *titles;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *subs;
+@property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *titleFields;
+@property (strong, nonatomic) IBOutletCollection(UITextView) NSArray *textViews;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
 
 @end

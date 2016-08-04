@@ -13,5 +13,6 @@
 
 //IBOutletCollections
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
+@property BOOL newPic;
 
 @end
