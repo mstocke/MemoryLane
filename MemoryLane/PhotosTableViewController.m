@@ -15,7 +15,6 @@
 @import FirebaseStorage;
 
 @interface PhotosTableViewController ()
-
 @end
 
 @implementation PhotosTableViewController
@@ -39,8 +38,9 @@
 }
 
 -(void)customUISetup {
-    Themer *mvcTheme = [[Themer alloc]init];
-    [mvcTheme themeAppBackgroundImage: self];
+    //Themer *mvcTheme = [[Themer alloc]init];
+    //[mvcTheme themeAppBackgroundImage: self];
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"blue_circles.png"]];
     [self.tableView setSeparatorColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.0f]];
 }
 
@@ -56,7 +56,9 @@
              NSURL *url = [NSURL URLWithString:photosDict[@"profilePhotoDownloadURL"]];
              NSData *data = [NSData dataWithContentsOfURL:url];
              
-             Photo *photo = [[Photo alloc] initWithImagePath:[UIImage imageWithData:data] andName:photosDict[@"name"] andDesc:photosDict[@"description"] andLat:photosDict[@"latitude"] andLong:photosDict[@"longitude"] andDate:photosDict[@"photoDate"] andFavorite:FALSE];
+             //NSLog(@"profilePhotoDownloadURL = %@", photosDict[@"profilePhotoDownloadURL"]);
+             
+             Photo *photo = [[Photo alloc] initWithImagePath:photosDict[@"profilePhotoDownloadURL"] andImage:[UIImage imageWithData:data] andName:photosDict[@"name"] andDesc:photosDict[@"description"] andLat:photosDict[@"latitude"] andLong:photosDict[@"longitude"] andDate:photosDict[@"photoDate"] andFavorite:FALSE andUID:snapshot.key];
              [_photos addObject:photo];
              
              //NSLog(@"photoObject = %@", photo);
@@ -88,7 +90,7 @@
     CGSize itemSize = CGSizeMake(40, 40);
     UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
     CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
-    [currentPhoto.imgPath drawInRect:imageRect];
+    [currentPhoto.image drawInRect:imageRect];
     cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     //cell.imageView.image = currentPhoto.imgPath;
@@ -151,8 +153,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     PhotoDetailViewController *vc = [segue destinationViewController];
     NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
-    vc.photo = [_photos objectAtIndex:selectedRowIndex.row];
-    
+    vc.photo = [_photos objectAtIndex:selectedRowIndex.row];        
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }

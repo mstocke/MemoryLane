@@ -12,12 +12,11 @@
 
 @interface PhotoDetailViewController : UIViewController <UITextFieldDelegate> 
 
-@property(strong, nonatomic)Photo *photo;
-
 //Properties
+@property (strong, nonatomic) Photo *photo;
 @property (strong, nonatomic) NSString *mode;
 @property (strong, nonatomic) NSString *imgPath;
-@property (strong, nonatomic) NSString *currentPhotoKey;
+//@property (strong, nonatomic) NSString *currentPhotoKey;
 
 //IBOutletCollections
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *labels;
