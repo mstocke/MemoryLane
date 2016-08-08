@@ -15,7 +15,7 @@
 
 @interface PhotoDetailViewController ()
 
-@property (strong, nonatomic) Photo *currentPhoto;
+//@property (strong, nonatomic) Photo *currentPhoto;
 @property (strong, nonatomic) FIRDatabaseReference *photosRef;
 
 #pragma mark IBOutlets
@@ -151,7 +151,7 @@
     _photoDescriptionEditField.hidden = TRUE;
     _savePhotoButton.hidden = TRUE;
     
-    _photoImage.image = _photo.imgPath;
+    _photoImage.image = _photo.image;
     _photoImage.contentMode = UIViewContentModeScaleAspectFit;
     _photoNameLabel.text = _photo.name;
     _photoDateLabel.text = _photo.date;
@@ -160,7 +160,9 @@
 
 - (void)editPhotoDetails {
     _photoNameEditField.hidden = FALSE;
+    _photoNameEditField.text = _photo.name;
     _photoDescriptionEditField.hidden = FALSE;
+    _photoDescriptionEditField.text = _photo.desc;
     _savePhotoButton.hidden = FALSE;
     _photoNameEditField.returnKeyType = UIReturnKeyDone;
     //_photoDescriptionEditField.returnKeyType = UIReturnKeyDone;
@@ -170,7 +172,7 @@
     _photoDescriptionLabel.hidden = TRUE;
     _editPhotoButton.hidden = TRUE;
     
-    _photoImage.image = _photo.imgPath;
+    _photoImage.image = _photo.image;
     _photoImage.contentMode = UIViewContentModeScaleAspectFit;
 }
 
@@ -184,40 +186,41 @@
              NSURL *url = [NSURL URLWithString:photosDict[@"profilePhotoDownloadURL"]];
              NSData *data = [NSData dataWithContentsOfURL:url];
              
-             _currentPhoto = [[Photo alloc] initWithImagePath:[UIImage imageWithData:data] andName:photosDict[@"name"] andDesc:photosDict[@"description"] andLat:photosDict[@"latitude"] andLong:photosDict[@"longitude"] andDate:photosDict[@"photoDate"] andFavorite:FALSE];
+             _photo = [[Photo alloc] initWithImagePath:photosDict[@"profilePhotoDownloadURL"] andImage:[UIImage imageWithData:data] andName:photosDict[@"name"] andDesc:photosDict[@"description"] andLat:photosDict[@"latitude"] andLong:photosDict[@"longitude"] andDate:photosDict[@"photoDate"] andFavorite:FALSE andUID:snapshot.key];
              
-             [self newPhotoDetails];
+             [self editPhotoDetails];
          }
      }];
 }
 
-- (void)newPhotoDetails {
-    _photoNameEditField.hidden = FALSE;
-    _photoDescriptionEditField.hidden = FALSE;
-    _savePhotoButton.hidden = FALSE;
-    
-    _photoNameLabel.hidden = TRUE;
-    _photoDateLabel.hidden = TRUE;
-    _photoDescriptionLabel.hidden = TRUE;
-    _editPhotoButton.hidden = TRUE;
-    
-    _photoImage.image = _currentPhoto.imgPath;
-    _photoImage.contentMode = UIViewContentModeScaleAspectFit;
-}
+//- (void)newPhotoDetails {
+//    _photoNameEditField.hidden = FALSE;
+//    _photoDescriptionEditField.hidden = FALSE;
+//    _savePhotoButton.hidden = FALSE;
+//    
+//    _photoNameLabel.hidden = TRUE;
+//    _photoDateLabel.hidden = TRUE;
+//    _photoDescriptionLabel.hidden = TRUE;
+//    _editPhotoButton.hidden = TRUE;
+//    
+//    _photoImage.image = _photo.imgPath;
+//    _photoImage.contentMode = UIViewContentModeScaleAspectFit;
+//}
 
 - (IBAction)commitData:(id)sender {
     
-    NSLog(@"_currentPhotoKey = %@", self.currentPhotoKey);
+    //NSLog(@"_currentPhotoKey = %@", self.currentPhotoKey);
     
     NSDictionary *post = @{@"name": _photoNameEditField.text,
                            @"description": _photoDescriptionEditField.text,
-                           @"profilePhotoDownloadURL": self.imgPath,
+                           @"profilePhotoDownloadURL": _photo.imgPath,
                            @"userID": [[User getInstance]userID],
-                           @"latitude": _currentPhoto.lat,
-                           @"longitude": _currentPhoto.lng,
-                           @"photoDate": _currentPhoto.date
+                           @"latitude": _photo.lat,
+                           @"longitude": _photo.lng,
+                           @"photoDate": _photo.date
     };
-    NSDictionary *childUpdates = @{[@"" stringByAppendingString:self.currentPhotoKey]: post};
+    //NSDictionary *childUpdates = @{[@"" stringByAppendingString:self.currentPhotoKey]: post};
+    NSDictionary *childUpdates = @{[@"" stringByAppendingString:_photo.uid]: post};
     [_photosRef updateChildValues:childUpdates];
     
     MapViewController *nextVC = [[MapViewController alloc] init];
@@ -225,6 +228,9 @@
     nextVC.newPic = FALSE;
     
     [self performSegueWithIdentifier:@"backToMapSegue" sender:self];
+}
+- (IBAction)editExistingPhoto:(id)sender {
+    [self editPhotoDetails];
 }
 
 #pragma mark - Navigation

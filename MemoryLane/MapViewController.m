@@ -132,9 +132,9 @@
         if (_newPic == TRUE) {
             PhotoDetailViewController *nextVC = [[PhotoDetailViewController alloc] init];
             nextVC = [self.storyboard instantiateViewControllerWithIdentifier:@"photoDetailViewController"];
-            nextVC.currentPhotoKey = snapshot.key;
+            //nextVC.currentPhotoKey = snapshot.key;
             
-            NSLog(@"currentPhotoKey = %@", nextVC.currentPhotoKey);
+            //NSLog(@"currentPhotoKey = %@", nextVC.currentPhotoKey);
 
             nextVC.mode = @"new";
             nextVC.imgPath = photosDict[@"profilePhotoDownloadURL"];

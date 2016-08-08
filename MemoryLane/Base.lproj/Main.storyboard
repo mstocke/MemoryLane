@@ -200,6 +200,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8J-Fi-lvE">
                                 <rect key="frame" x="75" y="524" width="170" height="30"/>
                                 <state key="normal" title="Edit Photo Info"/>
+                                <connections>
+                                    <action selector="editExistingPhoto:" destination="MsB-6m-4oL" eventType="touchUpInside" id="8DD-Bg-TPk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
